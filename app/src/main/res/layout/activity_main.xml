@@ -42,39 +42,43 @@
         android:textColorHint="@color/black"
         android:textColor="@color/black" />
 
-    <TextView
+    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/payPeriodLabel"
-        android:layout_centerHorizontal="true"
-        android:textSize="17dp"
-        android:textColor="@color/black"
-        android:text="Choose how you want to make your payments"
         android:layout_below="@+id/edtAmtPeriod"
-        android:layout_marginTop="10dp"/>
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        android:hint="Enter Down Payment"
+        android:id="@+id/edtDownPayment"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"/>
+
 
     <RadioGroup
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/radioGroupPayPeriod"
-        android:layout_below="@+id/payPeriodLabel"
+        android:id="@+id/radioGroupDownPayment"
         android:layout_centerHorizontal="true"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp"
+        android:layout_below="@+id/edtDownPayment">
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Monthy"
+            android:text="$"
             android:textSize="15dp"
             android:textColor="@color/black"
-            android:id="@+id/monthlyRadioButton" />
+            android:id="@+id/dollarDown" />
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Yearly"
+            android:text="%"
             android:textSize="15dp"
-            android:id="@+id/yearlyRadioButton"/>
+            android:id="@+id/percentDown"/>
 
     </RadioGroup>
 
@@ -82,12 +86,12 @@
         android:id="@+id/calculateMortgage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/radioGroupPayPeriod"
+        android:layout_below="@+id/radioGroupDownPayment"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:onClick="onClickCalculate"
         android:text="Calculate"
         android:background="@color/grey"
-        android:textColor="@color/black" />
+        android:textColor="@color/white" />
 
 </RelativeLayout>

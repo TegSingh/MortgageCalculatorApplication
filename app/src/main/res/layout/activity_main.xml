@@ -47,7 +47,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/payPeriodLabel"
         android:layout_centerHorizontal="true"
-        android:textSize="15dp"
+        android:textSize="17dp"
         android:textColor="@color/black"
         android:text="Choose how you want to make your payments"
         android:layout_below="@+id/edtAmtPeriod"
@@ -65,19 +65,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Monthy"
-            android:id="@+id/monthlyRadioButton"/>
+            android:textSize="15dp"
+            android:textColor="@color/black"
+            android:id="@+id/monthlyRadioButton" />
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Weekly"
-            android:id="@+id/weeklyRadioButton"/>
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Bi-Weekly"
-            android:id="@+id/biweeklyRadioButton"/>
+            android:text="Yearly"
+            android:textSize="15dp"
+            android:id="@+id/yearlyRadioButton"/>
 
     </RadioGroup>
 

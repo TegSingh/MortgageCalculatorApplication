@@ -3,6 +3,7 @@ package com.example.mortgagecalculatorapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -48,24 +49,25 @@ public class MainActivity extends AppCompatActivity {
         // Instantiate the Radio group
         RadioGroup radioGroupDownPayment = findViewById(R.id.radioGroupDownPayment);
 
-        // Handle event in case the value for principal has not been entered
-        if (edtPrincipal.getText().toString() == null) {
-            Toast.makeText(MainActivity.this, "Enter a value for Principal", Toast.LENGTH_SHORT).show();
-        }
-        // Handle event in case the value for interest has not been entered
-        if (edtInterest.getText().toString() == null) {
-            Toast.makeText(MainActivity.this, "Enter a value for Interest", Toast.LENGTH_SHORT).show();
-        }
-
-        // Handle event in case the value for amortization period has not been entered
-        if (edtAmtPeriod.getText().toString() == null) {
-            Toast.makeText(MainActivity.this, "Enter a value for Amortization Period", Toast.LENGTH_SHORT).show();
-        }
-
-        // Handle event in case the value for downpayment has not been entered
-        if (edtDownPayment.getText().toString() == null) {
-            Toast.makeText(MainActivity.this, "Enter a value for DownPayment", Toast.LENGTH_SHORT).show();
-        }
+//        // Handle event in case the value for principal has not been entered
+//        if (edtPrincipal.getText().toString() == "") {
+//            System.out.println("Principal not entered");
+//            Toast.makeText(MainActivity.this, "Enter a value for Principal", Toast.LENGTH_SHORT).show();
+//        }
+//        // Handle event in case the value for interest has not been entered
+//        if (edtInterest.getText().toString() == "") {
+//            Toast.makeText(MainActivity.this, "Enter a value for Interest", Toast.LENGTH_SHORT).show();
+//        }
+//
+//        // Handle event in case the value for amortization period has not been entered
+//        if (edtAmtPeriod.getText().toString() == "") {
+//            Toast.makeText(MainActivity.this, "Enter a value for Amortization Period", Toast.LENGTH_SHORT).show();
+//        }
+//
+//        // Handle event in case the value for downpayment has not been entered
+//        if (edtDownPayment.getText().toString() == "") {
+//            Toast.makeText(MainActivity.this, "Enter a value for DownPayment", Toast.LENGTH_SHORT).show();
+//        }
 
         // Get the string value and convert it to integer
         String principal_input = edtPrincipal.getText().toString();
@@ -109,7 +111,13 @@ public class MainActivity extends AppCompatActivity {
         System.out.println("Calculated Monthly Payments: " +  mortgage);
 
         // Add intent to move to the second activity
+        double[] message = new double[2];
+        message[0] = mortgage;
+        message[1] = amtperiod * 1.0;
+
         Intent i = new Intent(this, SecondActivity.class);
+        i.putExtra("results", message);
+        startActivity(i);
 
 
     }

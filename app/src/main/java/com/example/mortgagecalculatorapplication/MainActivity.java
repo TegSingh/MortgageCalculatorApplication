@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    String input = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +38,21 @@ public class MainActivity extends AppCompatActivity {
         return mortgage;
     }
 
+    // Method to check if the input provided contains digits and not alphabets or special characters
+    private static boolean validateInput(String s) {
+        System.out.println("Validate input method called");
+        int i = 0;
+        while (i < s.length()) {
+            System.out.print(s.charAt(i));
+            if (!(s.charAt(i) >= '0' && s.charAt(i) <= '9')) {
+                return false;
+            }
+            i++;
+        }
+        System.out.println();
+        return true;
+    }
+
     // On Click Listener method for Calculate button
     public void onClickCalculate(View view) {
         System.out.println("Calculate button clicked");
@@ -49,25 +66,52 @@ public class MainActivity extends AppCompatActivity {
         // Instantiate the Radio group
         RadioGroup radioGroupDownPayment = findViewById(R.id.radioGroupDownPayment);
 
-//        // Handle event in case the value for principal has not been entered
-//        if (edtPrincipal.getText().toString() == "") {
-//            System.out.println("Principal not entered");
-//            Toast.makeText(MainActivity.this, "Enter a value for Principal", Toast.LENGTH_SHORT).show();
+        // Handle event in case the value for principal has not been entered
+        if (edtPrincipal.getText().toString().matches("")) {
+            System.out.println("Principal not entered");
+            Toast.makeText(MainActivity.this, "Enter a value for Principal", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Handle event in case the value for interest has not been entered
+        if (edtInterest.getText().toString().matches("")) {
+            System.out.println("Interest value not entered");
+            Toast.makeText(MainActivity.this, "Enter a value for Interest", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Handle event in case the value for amortization period has not been entered
+        if (edtAmtPeriod.getText().toString().matches("")) {
+            System.out.println("Amortization Period not entered");
+            Toast.makeText(MainActivity.this, "Enter a value for Amortization Period", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Handle event in case the value for downpayment has not been entered
+        if (edtDownPayment.getText().toString().matches("")) {
+            System.out.println("Down Payment not entered");
+            Toast.makeText(MainActivity.this, "Enter a value for DownPayment", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+//        // Check if the values entered are valid integer values
+//        if (validateInput(edtPrincipal.getText().toString())) {
+//            Toast.makeText(MainActivity.this, "Enter a valid integer value for Principal", Toast.LENGTH_SHORT).show();
+//            return;
 //        }
-//        // Handle event in case the value for interest has not been entered
-//        if (edtInterest.getText().toString() == "") {
-//            Toast.makeText(MainActivity.this, "Enter a value for Interest", Toast.LENGTH_SHORT).show();
+//        if (validateInput(edtInterest.getText().toString())) {
+//            Toast.makeText(MainActivity.this, "Enter a valid floating point value for Interest", Toast.LENGTH_SHORT).show();
+//            return;
 //        }
-//
-//        // Handle event in case the value for amortization period has not been entered
-//        if (edtAmtPeriod.getText().toString() == "") {
-//            Toast.makeText(MainActivity.this, "Enter a value for Amortization Period", Toast.LENGTH_SHORT).show();
+//        if (validateInput(edtAmtPeriod.getText().toString())) {
+//            Toast.makeText(MainActivity.this, "Enter a valid integer for amortization period", Toast.LENGTH_SHORT).show();
+//            return;
 //        }
-//
-//        // Handle event in case the value for downpayment has not been entered
-//        if (edtDownPayment.getText().toString() == "") {
-//            Toast.makeText(MainActivity.this, "Enter a value for DownPayment", Toast.LENGTH_SHORT).show();
+//        if (validateInput(edtDownPayment.getText().toString())) {
+//            Toast.makeText(MainActivity.this, "Enter a value for Down Payment", Toast.LENGTH_SHORT).show();
+//            return;
 //        }
+
 
         // Get the string value and convert it to integer
         String principal_input = edtPrincipal.getText().toString();

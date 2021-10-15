@@ -24,7 +24,7 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/edtPrincipal"
         android:layout_margin="10dp"
-        android:hint="Enter Interest Rate in %"
+        android:hint="Enter Yearly Interest Rate in %"
         android:textColorHint="@color/black"
         android:textColor="@color/black"/>
 

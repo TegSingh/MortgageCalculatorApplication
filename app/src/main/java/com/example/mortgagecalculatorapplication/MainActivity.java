@@ -38,21 +38,6 @@ public class MainActivity extends AppCompatActivity {
         return mortgage;
     }
 
-    // Method to check if the input provided contains digits and not alphabets or special characters
-    private static boolean validateInput(String s) {
-        System.out.println("Validate input method called");
-        int i = 0;
-        while (i < s.length()) {
-            System.out.print(s.charAt(i));
-            if (!(s.charAt(i) >= '0' && s.charAt(i) <= '9')) {
-                return false;
-            }
-            i++;
-        }
-        System.out.println();
-        return true;
-    }
-
     // On Click Listener method for Calculate button
     public void onClickCalculate(View view) {
         System.out.println("Calculate button clicked");
@@ -94,25 +79,6 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-//        // Check if the values entered are valid integer values
-//        if (validateInput(edtPrincipal.getText().toString())) {
-//            Toast.makeText(MainActivity.this, "Enter a valid integer value for Principal", Toast.LENGTH_SHORT).show();
-//            return;
-//        }
-//        if (validateInput(edtInterest.getText().toString())) {
-//            Toast.makeText(MainActivity.this, "Enter a valid floating point value for Interest", Toast.LENGTH_SHORT).show();
-//            return;
-//        }
-//        if (validateInput(edtAmtPeriod.getText().toString())) {
-//            Toast.makeText(MainActivity.this, "Enter a valid integer for amortization period", Toast.LENGTH_SHORT).show();
-//            return;
-//        }
-//        if (validateInput(edtDownPayment.getText().toString())) {
-//            Toast.makeText(MainActivity.this, "Enter a value for Down Payment", Toast.LENGTH_SHORT).show();
-//            return;
-//        }
-
-
         // Get the string value and convert it to integer
         String principal_input = edtPrincipal.getText().toString();
         int principal = Integer.parseInt(principal_input);
@@ -136,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
         RadioButton percent = findViewById(R.id.percentDown);
         float downpayment = 0;
 
-        // Get the selected radio button values and calculate downpayment
+        // Get the selected radio button values and calculate down payment
         if (dollar.isChecked()) {
             System.out.println("$ button checked");
             downpayment = Float.parseFloat(downpayment_input);
@@ -147,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
             System.out.println("Entered Down Payment: " + downpayment);
         } else {
             System.out.println("No Radio button was checked");
-            Toast.makeText(MainActivity.this, "Assuming Downpayment to be in dollars", Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this, "Assuming Down Payment to be in dollars", Toast.LENGTH_SHORT).show();
         }
 
         // Calculate monthly payments using the provided input
